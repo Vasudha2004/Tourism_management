@@ -1,0 +1,21 @@
+{% extends 'home.html' %}
+{% block content %}
+<div class="logo1">
+    <u style="color:skyblue"><h1 style="color: rgb(243, 243, 233);" align="center">NATIONAL PARK TOURS</h1></u>
+    <br>
+    <table border="1" style="color: rgb(26, 26, 25); background-color: rgb(138, 244, 96); opacity: 70%;" align="center">
+        <tr>
+            <th style="color:black">Location</th>
+            <th style="color:black">Description</th>
+        </tr>
+            {% for i in cat %}
+                <tr>
+                    <td>{{i.location}}</td>
+                    <td>{{i.details}}</td>
+                </tr>
+            {% endfor %}
+    </table>
+</div>
+
+ 
+{% endblock %}

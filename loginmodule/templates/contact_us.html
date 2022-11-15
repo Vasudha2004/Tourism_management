@@ -1,0 +1,33 @@
+{% extends 'home.html' %}
+{% block content %}
+
+<head>
+    <style>
+    h1 {text-align: center;}
+    h2 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+    </style>
+</head>
+<div class="container" style="margin-top: 50px;">
+    <h1 class="text-center">Contact us</h1>
+    <div class="row mt-5 text-center">
+      <div class="col-lg-3 col-sm-6 mydivstyle">
+        <h2><i class="fas fa-phone-square"> Contact</i></h4>
+        <p class="font-weight-bold mt-3"><a style = "color:rgb(255, 255, 255)" href="tel: +919120xxxxxx">+919120xxxxxx</a></p>
+      </div>
+      <div class="col-lg-3 col-sm-6 mydivstyle">
+        <h2><i class="fa fa-envelope"></i>send-email</h4>
+        <p class="font-weight-bold mt-3"><a style = "color:rgb(255, 255, 255)" href="mailto:abc@gmail.com">abc@gmail.com</a></p>
+      </div>
+      <div class="col-lg-3 col-sm-6 mydivstyle">
+        <h2><i class="fa fa-address-card" aria-hidden="true"></i>office address</h4>
+        <p class="font-weight-bold mt-3"><a style = "color:rgb(255, 255, 255)" href="http://maps.google.com/maps?q=varanasi">varanasi</a></p>
+      </div>
+      <div class="col-lg-3 col-sm-6 mydivstyle">
+        <h2><i class="fa fa-address-card" aria-hidden="true"></i>office time</h4>
+        <p style="color:rgb(247, 247, 247);" class="font-weight-bold mt-3">9AM - 11PM</p>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
