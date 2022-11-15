@@ -1,0 +1,76 @@
+<!-- home.html -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    .logo1{
+        padding-top: 100px;
+    
+    }
+
+    h1 {text-align: center;}
+</style>
+
+
+    
+
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/grid.css' %}">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+</head>
+<body style="background-image: url('{%static 'images/Goabeach.jpg' %}');"> 
+    <header>
+        <div class="navigation">
+            <li><h3 style="color: rgb(243, 243, 233); ">Tourism Management Website</h3></li>
+            <ul class="menu">
+
+                <li ><a href="/" style="color: rgb(243, 243, 233);">Home</a></li>
+                <li><a href="/contact_us/" style="color: rgb(243, 243, 233);">Contact Us</a> </li>
+                {% if request.user.is_authenticated %}
+                    <li><a href="/loginmodule/logout/" style="color: rgb(243, 243, 233);">Logout</a></li>
+                    <li><a href="/loginmodule/suggestions/" style="color:aliceblue;">Suggestions</a></li>
+                    {% if request.session.temp != "abc" %}
+                        <li><a href="/BookTicketApp/booking_history/" style="color: rgb(243, 243, 233);">Booking History</a> </li>
+                    {% else %}
+                        <li><a href="/BookTicketApp/book_ticket/" style="color: rgb(243, 243, 233);">Book Tour</a></li>
+                        {% endif %}
+                {% else %}
+                    <li><a href="/loginmodule/aboutus/" style="color: rgb(243, 243, 233);">About Us</a></li>
+                    <li><a href="/SignupApp/signup/" style="color: rgb(243, 243, 233);">SignUp</a></li>
+                {% endif %}
+                    
+                     <li><a href="/loginmodule/login/" style="color: rgb(243, 243, 233);">Login</a></li>
+            </ul>
+                {% if request.user.is_authenticated %}
+                     <br><h1 style="color:red " align="right" style="color: rgb(243, 243, 233);">Welcome  {{ request.session.full_name }}</h1>
+                {% endif %}
+        </div>
+    </header>
+    {% block content %} 
+    <a href="/BookTicketApp/book_ticket/"><u style="color:seashell"><h1 style="color:rgb(11, 11, 10)" align="center">Book tour</h1></u></a>
+        <div class="logo1">
+        <u style="color:skyblue"><h1 style="color: rgb(243, 243, 233);" align="center">INFORMATION ABOUT PACKAGES</h1></u>
+            <br>
+            <table border="1" style="color: rgb(243, 243, 233); background-color: rgb(54, 48, 52); opacity: 70%;" align="center">
+                <tr>
+                    <th>Pacakge ID</th>
+                    <th>Package name</th>
+                    <th>Amount</th>
+                </tr>
+                    {% for pack in packs %}
+                        <tr>
+                            <td>{{pack.pack_id}}</td>
+                            <td>{{pack.pack_name}}</td>
+                            <td>{{pack.pack_price}}</td>
+                        </tr>
+                    {% endfor %}
+            </table>
+        </div>
+        
+    {% endblock %}
+</body>
+</html>

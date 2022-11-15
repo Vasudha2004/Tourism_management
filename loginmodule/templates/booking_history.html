@@ -1,0 +1,24 @@
+{% extends 'home.html' %}
+<div class="agile-login">
+{% block content %}
+
+    <center><h1 style="color:darkorange">Booking history</h1></center>
+    {% for book in bookings %}
+        <table width="100%" style=" border-radius:5px;color:white;padding: 20px;"  >
+        <tr><td>booking id:{{ book.booking_id }}</td><td>Package ID:{{ book.pack_id }}</td><td>date of journey:{{ book.fromdate }}</td><td>End of tour:{{ book.todate }}</td></tr>
+        <tr><td colspan="5">
+            {% if today.day < book.fromdate.day and today.month <= book.fromdate.month and today.year <= book.fromdate.year %}
+            <form action="/BookTicketApp/delete/" method="post">{% csrf_token %}
+                <center><button name="cancel" value="{{ book.booking_id }}" style="background-color: lightblue;color: white;padding: 10px 25px;font-size: 15px;text-align: center;display: inline-block;" >CANCEL TICKET</button></center>
+            </form>
+            {% else %}
+                <form action="/BookTicketApp/feedback/" method="post">{% csrf_token %}
+                <center><button name="submit" value="submit" style="background-color:lightgreen;color: white;padding: 10px 25px;font-size: 15px;text-align: center;display: inline-block;" >RATE YOUR JOURNEY</button></center>
+            </form>
+
+            {% endif %}
+        </td></tr>
+        </table>
+    {% endfor %}
+{% endblock %}
+</div>
